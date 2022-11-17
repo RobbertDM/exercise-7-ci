@@ -19,10 +19,10 @@ jobs:
     - name: Build the docker image with the registry name in it
       run: |
         git_hash=$(git rev-parse --short HEAD)
-        docker build . -t docker.pkg.github.com/robbertdm/exercise-7-ci/project-api:$git_hash
+        docker build . -t ghcr.io/robbertdm/exercise-7-ci/project-api:$git_hash
 
     - name: Login and push to Github packages
       run: |
         git_hash=$(git rev-parse --short HEAD)
         docker login https://docker.pkg.github.com --username ${{ github.actor }} --password ${{ secrets.GITHUB_TOKEN }}
-        docker push docker.pkg.github.com/robbertdm/exercise-7-ci/project-api:$git_hash
+        docker push ghcr.io/robbertdm/exercise-7-ci/project-api:$git_hash
