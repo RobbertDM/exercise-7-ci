@@ -19,7 +19,8 @@ jobs:
         docker build . -t project-api:$git_hash
 
     - name: Test the docker image
-      run: | docker run \
+      run: |
+        docker run \
         --entrypoint=/bin/bash \
         project-api:$git_hash \
         ./script/test
